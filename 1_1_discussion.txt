@@ -1,0 +1,57 @@
+JavaScript can be used for 
+backend , 
+build tool , 
+front end
+3D
+Games
+Sound Engineering
+Video
+
+Machine Code 
+
+   WASM , You can convert C/Java/C#/Python convert to WASM
+
+
+
+Two Environments
+
+    Browser Environments
+    Node Environment(Non Browser)
+
+
+var - 
+   we can access outside of block scope
+   we cannot access outside of function scope
+   If this variable declared at highest level , can be accessed anywhere
+const and let -  
+   we cannot access outside of block scope
+   we cannot access outside of function scope
+
+A 
+  B
+    C
+      age +1
+      D
+        let age = 45;
+        age+1
+
+        Block scope
+        Function scope
+        Global scope
+        Module Scope(export import default)
+
+        SOLID -  
+
+        S-  Single Responsibility
+        O - Open for Extension and Closed for Modification
+        L - Liskov Substitution Principle
+        I - Interface Segregation
+        D - Dependency Injection (Data sharing) - IOC 
+
+
+        Primitive and Reference
+        Primitive - String Number Boolean
+        Reference - Array of Same Data Type , Object 
+
+        npm init -y
+        npm install immer

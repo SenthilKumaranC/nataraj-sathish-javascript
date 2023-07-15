@@ -1,0 +1,23 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "JavaScript Lessons",
+  "main": "1_2_var_const_let.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SenthilKumaranC/nataraj-sathish-javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SenthilKumaranC/nataraj-sathish-javascript/issues"
+  },
+  "homepage": "https://github.com/SenthilKumaranC/nataraj-sathish-javascript#readme",
+  "dependencies": {
+    "immer": "^10.0.2"
+  }
+}

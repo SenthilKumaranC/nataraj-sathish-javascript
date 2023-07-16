@@ -8,6 +8,8 @@ function isPalindrome(word){
     //return word === word.split("").reverse().join("");
 }
 
+"race"
+
 console.log(isPalindrome("race"))
 
 
@@ -40,3 +42,18 @@ const chars = getCharacters("mada");
 
 //madam
 
+String.prototype.isPalindrome = function () {
+    const word = this.slice(0);
+    console.log("line 47",this,word);
+    const splitLetters = word.split("");
+    const reverseArray = splitLetters.reverse();
+    const reversedWord = reverseArray.join("");
+    console.log(reversedWord,word)
+    return reversedWord === word;
+}
+
+const word = "race";
+
+console.log("isPalindrom",word.isPalindrome());
+
+//Hi senthil. if possible, please upload all these to GITHUB when you get time. thanks.

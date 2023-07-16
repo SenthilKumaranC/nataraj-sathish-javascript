@@ -1,0 +1,11 @@
+let university = " Anna University  "
+
+console.log(university.trim().substring(0,3).length);
+
+let rhym = "Twinkle Twinkle little star";
+const newrhym = rhym.replace("star","Sun");
+console.log(newrhym);
+//const newRhym2 = rhym.replaceAll("Twinkle","Ankle");
+//console.log(newRhym2);
+const newRhym3 = rhym.replace(/Twinkle/g,"Ankle");
+console.log(newRhym3);

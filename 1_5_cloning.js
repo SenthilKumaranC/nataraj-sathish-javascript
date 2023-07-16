@@ -20,7 +20,7 @@ let shareValues = [
     { companyName: "TCS", value: 300 },
     { companyName: "TATA", value: 400 },
   ];
-  
+
 const newShareValues = produce(shareValues,(draft)=>{
     draft[0].value = 450;
 })

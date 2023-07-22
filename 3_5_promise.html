@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <script>
+      //setTimeout(() => {}, 2000);
+
+      const timerPromise = () => {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, 2000);
+        });
+      };
+
+      /*navigator.geolocation.getCurrentPosition(
+        (data) => {console.log(data)},
+        (error) => {console.log(error)},
+        { enableHighAccuracy: true}
+      );*/
+
+      const locationPromise = () => {
+        return new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(
+            (data) => {
+              resolve();
+            },
+            (error) => {
+              reject();
+            },
+            { enableHighAccuracy: true }
+          );
+        });
+      };
+
+      /*const xmlHttpRequest = new XMLHttpRequest();
+
+      xmlHttpRequest.open(
+        "GET",
+        "https://jsonplaceholder.typicode.com/todos/1"
+      );
+
+      xmlHttpRequest.onload = () => {
+          console.log(xmlHttpRequest.response.userId)
+      }
+
+      xmlHttpRequest.onerror = () => {};
+    
+      xmlHttpRequest.onabort = () => {};
+
+      xmlHttpRequest.send();*/
+
+      const apiPromise = () => {
+        return new Promise((resolve, reject) => {
+          const xmlHttpRequest = new XMLHttpRequest();
+
+          xmlHttpRequest.open(
+            "GET",
+            "https://jsonplaceholder.typicode.com/todos/1"
+          );
+
+          xmlHttpRequest.onload = () => {
+            resolve();
+          };
+
+          xmlHttpRequest.onerror = () => {
+            reject();
+          };
+
+          xmlHttpRequest.onabort = () => {
+            reject();
+          };
+
+          xmlHttpRequest.send();
+        });
+      };
+
+      /*fetch("https://jsonplaceholder.typicode.com/todos/1")
+         .then((rawResponse)=> rawResponse.json())
+         .then(data=>console.log(data))
+         .catch((error)=>console.log(error))*/
+    </script>
+  </head>
+
+  <body></body>
+</html>

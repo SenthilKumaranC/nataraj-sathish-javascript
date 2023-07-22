@@ -1,0 +1,41 @@
+String Methods
+Number Methods
+Array Methods
+Object Methods
+
+
+Date Methods - run inside JS Engine
+Timer Methods - setTimeout , setInterval (callback based) - WebAPIs
+Location Methods - navigator.geoLocation.getCurrentPostion(callback based) - webAPIS
+AJAX methods - XMLHttpRequest (Event based) , fetch(Promise based)
+
+
+
+Callback based methods
+Event based methods
+Promise based methods
+
+BIND Scope
+
+
+Class - Arrow Function will remember this
+Class - Normal Function will not remember this 
+
+
+Task - 1 success 0 Failure ( setTimeout)
+
+setTimeout(func,2000)
+getCurrentPostion(succeFunc,failureFunc,{enableHi:true})
+XMLHttpRequest()
+xml.load = () => {
+    success
+}
+xml.error = () => {
+
+}
+xml.abort = () => {
+    
+}
+
+
+

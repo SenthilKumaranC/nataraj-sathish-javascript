@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <script>
+      setTimeout(function () {
+        //console.log("set time out example");
+      }, 5000);
+
+      const timerPromise = (timeInterval) => {
+        return new Promise((resolve) => {
+          setTimeout(function () {
+            //console.log("Promise",timeInterval);
+            resolve(timeInterval);
+          }, timeInterval);
+        });
+      };
+
+      const timerPromisereject = (timeInterval) => {
+        return new Promise((_,reject) => {
+          setTimeout(function () {
+            reject(`REJECT ${timeInterval}`);
+            console.log("Promise",timeInterval);
+          }, timeInterval);
+        });
+      };
+
+
+
+
+      // To run timers in Sequence
+    /*timerPromise(4000)
+        .then( () => timerPromise(3000)
+        .then( () => {console.log("timer 3000 completed"); return timerPromise(2000);})  
+        .then( () => console.log("All timer complete"))
+        .then( () => console.log("4th then"))
+
+            )      
+*/
+      // To run timers in Parallel
+    /*  const timer1Promise = timerPromise(4000);
+      const timer2Promise = timerPromise(3000);      
+      const timer3Promise = timerPromise(2000);
+
+      Promise.all([timer1Promise,timer2Promise,timer3Promise])
+         .then((data)=>{console.log("all timers completed", data)});*/
+
+      const timer4Promise = timerPromise(10000);
+      const timer5Promise = timerPromise(3000);      
+      const timer6Promise = timerPromise(2000);
+
+      Promise.any([timer4Promise,timer5Promise,timer6Promise]).then((data)=>{console.log("Any timers completed", data)});
+
+      Promise.race([timerPromisereject(1000),timer5Promise,timer6Promise]).then((data)=>{console.log("Any timers completed", data)});
+
+
+
+
+
+
+
+
+
+      /*const dynamicLengthValidator = (length) => {
+        return function lengthOfString(word) {
+          if (word.length > length) {
+            console.log("True");
+          } else console.log("False");
+        };
+      };
+
+      const lengthFiveValidator = dynamicLengthValidator(5);
+      lengthFiveValidator("Race")
+
+      const length4Validator = dynamicLengthValidator(4);
+      length4Validator("Race")
+
+      console.log(typeof lengthFiveValidator)*/
+    </script>
+  </head>
+
+  <body></body>
+</html>

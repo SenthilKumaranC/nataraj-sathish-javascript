@@ -22,7 +22,7 @@ function init(){
         console.log("timer 3 ended")
       })
 
-      console.log("Hi ")
+    console.log("Hi ")
    
     
 

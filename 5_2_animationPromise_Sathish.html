@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <style>
+      .red {
+        background-color: red;
+        font-size: 35px;
+        width:100px;
+        height:100px;
+    }
+
+      .active {
+        animation-duration:2s;
+        animation-name:moveFromLeftToRight;
+        animation-iteration-count: 1;
+    }
+
+      @keyframes moveFromLeftToRight {
+        from {
+          transform: translateX(0%);
+        }
+        to {
+          transform: translateX(300%);
+        }
+      }
+    </style>
+
+   
+    <script>
+      /*function startAnimation(){
+          const elem1 = document.getElementById("elem1") 
+
+          elem1.addEventListener("animationstart",()=>{
+            console.log("animation start")
+          })
+          elem1.addEventListener("animationiteration",()=>{
+            console.log("animation happening")
+          })
+          elem1.addEventListener("animationend",()=>{
+            console.log("animation over")
+          })
+          elem1.classList.add("active")
+      }
+
+      function init(){
+        const button = document.getElementById("animationButton")
+        console.log(button)
+        button.addEventListener("click",startAnimation)
+      }*/
+
+     
+
+    </script>
+  </head>
+
+  <body>
+    <h1 id="elem1" class="red" onanimationend="animationEnd()">welcome</h1>
+    <h1 id="elem2" class="red">welcome</h1>
+    <h1 id="elem3" class="red">welcome</h1>
+    <button id="animationButton">Start Animation</button>
+    
+
+  </body>
+  <script src="./5_2_animation.js"></script>
+</html>

@@ -47,10 +47,12 @@
       const timer5Promise = timerPromise(3000);      
       const timer6Promise = timerPromise(2000);
 
-      Promise.any([timer4Promise,timer5Promise,timer6Promise]).then((data)=>{console.log("Any timers completed", data)});
+      /*Promise.any([timer4Promise,timer5Promise,timer6Promise]).then((data)=>{console.log("Any timers completed", data)});*/
 
-      Promise.race([timerPromisereject(1000),timer5Promise,timer6Promise]).then((data)=>{console.log("Any timers completed", data)});
+      Promise.race([timerPromisereject(1000),timer5Promise,timer6Promise]).then((data)=>{console.log("Race timer", data)});
 
+
+    
 
 
 

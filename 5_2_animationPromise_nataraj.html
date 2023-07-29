@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <style>
+      .red {
+        background-color: rgb(226, 43, 43);
+        font-size: 35px;
+        width: 100px;
+        height: 100px;
+      }
+
+      .active {
+        animation-duration: 2s;
+        animation-iteration-count: 5;
+        animation-name: moveFromLeftToRight;
+      }
+
+      @keyframes moveFromLeftToRight {
+        from {
+          transform: translateX(0%);
+        }
+        to {
+          transform: translateX(300%);
+        }
+      }
+    </style>
+    <script></script>
+  </head>
+  <body>
+    <h1 class="red active">JAVASCRIPT</h1>
+    <button>Start Animation</button>    
+  </body>
+</html>

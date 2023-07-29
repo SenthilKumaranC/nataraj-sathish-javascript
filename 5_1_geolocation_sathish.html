@@ -1,0 +1,108 @@
+<html>
+  <script>
+    const add = (a, b) => a + b;
+
+    const timerId = setTimeout(function () {
+      add(1, 2);
+    }, 100000);
+
+    clearTimeout(timerId);
+
+    const timerPromise = (timeInterval) =>
+      new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+          console.log("promise in set Timeout");
+        }, timeInterval);
+      });
+
+    /*navigator.geolocation.getCurrentPosition(
+              (coordindates) => {
+                console.log(coordinates);
+              },
+              (error) => {
+                console.log("location not found");
+              },
+              { enableHighAccuracy: true, timeout: 2000 }
+            );*/
+
+    /*   const locationPromise = () =>
+              new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(
+                  (coordindates) => {
+                    resolve(coordinates);
+                  },
+                  (error) => {
+                    reject(error);
+                  },
+                  { enableHighAccuracy: true, timeout: 2000 }
+                );
+              });
+
+            locationPromise()
+              .then((coordinates) => console.log("location found", coordinates))
+              .catch(() => console.log("Error"));
+
+
+              const xmlHttpRequest = new XMLHttpRequest();
+
+              xmlHttpRequest.open(
+                "GET",
+                "https://jsonplaceholder.typicode.com/todos/1"
+              );
+
+              xmlHttpRequest.onload = () => {console.log("1")}
+              xmlHttpRequest.onload = () => {console.log("2")}
+
+              xmlHttpRequest.addEventListener("load",() => {console.log("3")})
+              xmlHttpRequest.addEventListener("load",() => {console.log("4")})
+              xmlHttpRequest.addEventListener("load",() => {console.log("5")})
+
+              xmlHttpRequest.onerror = () => {};
+
+              xmlHttpRequest.onabort = () => {};
+
+              xmlHttpRequest.send();
+
+    */
+    const httpRequestPromise = (requestData) =>
+      new Promise((resolve, reject) => {
+        const xmlHttpRequest = new XMLHttpRequest();
+
+        xmlHttpRequest.open(requestData.method, requestData.url);
+
+        xmlHttpRequest.onload = (event) => {
+          resolve(JSON.parse(event.target.response));
+        };
+
+        xmlHttpRequest.onerror = (error) => {
+          reject({ type: "error", error: error });
+        };
+
+        xmlHttpRequest.onabort = (error) => {
+          reject({ type: "abort", error: error });
+        };
+
+        requestData.body
+          ? xmlHttpRequest.send(requestData.body)
+          : xmlHttpRequest.send();
+      });
+
+    httpRequestPromise({
+      method: "POST",
+      url: "http://bsdhbdfdhbf.con/addUser",
+      body: { name: "Raja", experience: 3 },
+    })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+  </script>
+
+  <body>
+    <h1>welcome</h1>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <script>
+
+     setTimeout((a)=>{ console.log(a)},2000,1,2);   
+ 
+ /*    navigator.geolocation.getCurrentPosition(
+        (coordinates) => {
+          console.log(coordinates);
+        },
+        (error) => {
+          console.log(error);
+        },
+        {enableHighAccuracy: true, timeout: 2000}
+      );
+*/
+
+      const locationPromise = () => new Promise((resolve,reject) => {
+        navigator.geolocation.getCurrentPosition(
+        (coordinates) => {
+            resolve(coordinates);
+          //console.log(coordinates);
+        },
+        (error) => {
+            reject(error);
+          //console.log(error);
+        },
+        {enableHighAccuracy: true, timeout: 2000}
+      );
+      });
+
+      locationPromise()
+      .then((coordinates)=>{
+        console.log(`Location Found ${coordinates}`);
+      })
+      .catch((error)=>{
+        console.log(`Location Not Found due to ${error}`);
+      })
+
+      const setTimmerPromise = new Promise((resolve) => {
+        setTimeout(()=>{resolve();},2000); 
+      })
+
+      const xmlHttpRequest = new XMLHttpRequest();
+
+      xmlHttpRequest.open(
+        "GET",
+        "https://jsonplaceholder.typicode.com/todos/1"
+      );
+
+      xmlHttpRequest.onload = () => {console.log("1")}
+      xmlHttpRequest.onload = () => {console.log("2")}
+
+      xmlHttpRequest.addEventListener("load",() => {console.log("3")})
+      xmlHttpRequest.addEventListener("load",() => {console.log("4")})
+      xmlHttpRequest.addEventListener("load",() => {console.log("5")})
+
+      xmlHttpRequest.onerror = () => {};
+    
+      xmlHttpRequest.onabort = () => {};
+
+      xmlHttpRequest.send();
+
+      const xmlHttpRequestPromise = new Promise((reseolve,reject)=>{
+        const xmlHttpRequest = new XMLHttpRequest();
+
+      xmlHttpRequest.open(
+        "GET",
+        "https://jsonplaceholder.typicode.com/todos/1"
+      );
+      xmlHttpRequest.addEventListener("load",(event) => {resolve(JSON.parse(event.target.response))})
+
+      xmlHttpRequest.onerror = (error) => {reject(error)};
+    
+      xmlHttpRequest.onabort = (error) => {reject(error)};
+
+      xmlHttpRequest.send();
+
+
+      });
+      
+    </script>
+  </head>
+  <body></body>
+</html>

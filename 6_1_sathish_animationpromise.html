@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <style>
+      .layout {
+        font-size: 35px;
+        width: 100px;
+        height: 100px;
+      }
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: green;
+      }
+
+      .blue {
+        background-color: blue;
+      }
+
+      .active {
+        animation-duration: 2s;
+        animation-name: moveFromLeftToRight;
+        animation-iteration-count: 1;
+      }
+
+      @keyframes moveFromLeftToRight {
+        from {
+          transform: translateX(0%);
+        }
+        to {
+          transform: translateX(300%);
+        }
+      }
+    </style>
+
+    <script></script>
+
+    <script>
+      const animationPromise = (id) => new Promise((resolve, reject) => {
+        /* Starting an animation task */
+        const element = document.getElementById(id);
+        element.classList.add("active");
+        /* watch for animation end */
+        const onAnimationEnd = (event) => {
+          console.log(event);
+          resolve();
+        };
+        element.addEventListener("animationend", onAnimationEnd);
+      } )
+
+      function startFullAnimation() {
+        animationPromise("elem1").then (() => {
+        console.log("animation 1 completed"); 
+        return animationPromise("elem2");
+        })
+        .then (() => {
+          console.log("animation 2 completed");
+          return animationPromise("elem3");
+        })
+        .then (() => {
+          console.log("animation 3 completed");
+          })
+      }
+
+
+      function onLoad() {
+        const button = document.getElementById("animationButton");
+        button.addEventListener("click",startFullAnimation);
+      }
+
+      window.addEventListener("load",onLoad);
+
+    </script>
+  </head>
+
+  <body>
+    <h1 id="elem1" class="layout red"></h1>
+    <h1 id="elem2" class="layout green"></h1>
+    <h1 id="elem3" class="layout blue"></h1>
+    <button id="animationButton">Start Animation</button>
+  </body>
+</html>

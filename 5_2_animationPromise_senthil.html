@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <style>
+      .layout{
+        font-size: 35px;
+        width: 100px;
+        height: 100px;
+      }
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color:green;
+      }
+
+      .blue {
+        background-color:blue;
+      }
+
+      .active {
+        animation-duration: 2s;
+        animation-name: moveFromLeftToRight;
+        animation-iteration-count: 1;
+      }
+
+      @keyframes moveFromLeftToRight {
+        from {
+          transform: translateX(0%);
+        }
+        to {
+          transform: translateX(300%);
+        }
+      }
+    </style>
+
+    <script>
+      function startAnimation() {
+        const elem1 = document.getElementById("elem1");
+        elem1.classList.add("active");
+      }
+
+      function animationEnd() {
+        console.log("animation end");
+      }
+      function init(){
+        console.log("init")
+        const button = document.getElementById("animationButton");
+        button.addEventListener("click", startAnimation);
+
+      }
+
+      window.addEventListener("load",init);
+     
+    </script>
+  </head>
+
+  <body>
+    <h1 id="elem1" class="layout red"></h1>
+    <h1 id="elem2" class="layout green"></h1>
+    <h1 id="elem3" class="layout blue"></h1>
+    <button id="animationButton">Start Animation</button>
+  </body>
+</html>

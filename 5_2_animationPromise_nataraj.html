@@ -2,17 +2,17 @@
   <head>
     <style>
       .red {
-        background-color: rgb(226, 43, 43);
+        background-color: red;
         font-size: 35px;
-        width: 100px;
-        height: 100px;
-      }
+        width:100px;
+        height:100px;
+    }
 
       .active {
-        animation-duration: 2s;
-        animation-iteration-count: 5;
-        animation-name: moveFromLeftToRight;
-      }
+        animation-duration:2s;
+        animation-name:moveFromLeftToRight;
+        animation-iteration-count: 1;
+    }
 
       @keyframes moveFromLeftToRight {
         from {
@@ -23,10 +23,26 @@
         }
       }
     </style>
-    <script></script>
+
+    <script>
+      function startAnimation(){
+          const elem1 = document.getElementById("elem1")
+          elem1.addEventListener("animationstart",()=>{
+            console.log("animation start")
+          })
+          elem1.addEventListener("animationiteration",()=>{
+            console.log("animation happening")
+          })
+          elem1.addEventListener("animationend",()=>{
+            console.log("animation over")
+          })
+          elem1.classList.add("active")
+      }
+    </script>
   </head>
+
   <body>
-    <h1 class="red active">JAVASCRIPT</h1>
-    <button>Start Animation</button>    
+    <h1 id="elem1" class="red">welcome</h1>
+    <button onclick="startAnimation()">Start Animation</button>
   </body>
 </html>

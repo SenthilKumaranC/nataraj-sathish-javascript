@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <style>
+      .layout {
+        font-size: 35px;
+        width: 100px;
+        height: 100px;
+      }
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: green;
+      }
+
+      .blue {
+        background-color: blue;
+      }
+
+      .move {
+        animation-duration: 2s;
+        animation-name: moveFromLeftToRight;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes moveFromLeftToRight {
+        0% {
+          transform: translateX(0%) rotateZ(0deg);
+        }
+        50% {
+          transform: translateX(150%) rotateZ(360deg);
+        }
+        100%{
+          transform: translateX(300%) rotateZ(0deg);
+        }
+      }
+
+      .rotate {
+        animation-duration: 2s;
+        animation-name: rotateToFull;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes rotateToFull {
+        from {
+          transform: translateX(300%) rotateZ(0deg) 
+        }
+        to {
+          transform: translateX(300%) rotateZ(360deg) 
+        }
+      }
+    </style>
+
+    <script>
+      function move(element) {
+        element.classList.add("move");
+      }
+      function rotate(element) {
+        element.classList.add("rotate");
+      }
+      const animationPromise = (id, animationLogic) => {
+        return new Promise((resolve, reject) => {
+          const elem1 = document.getElementById(id);
+          animationLogic(elem1);
+
+          const onAnimationEnd = () => {
+            resolve();
+          };
+          const element = document.getElementById(id);
+          element.addEventListener("animationend", onAnimationEnd);
+        });
+      };
+    </script>
+
+    <script>
+      async function startFullAnimation() {
+        //Sequence and blocking
+        /*await animationPromise("elem1");
+        console.log("animation1 completed");
+        await animationPromise("elem2");
+        console.log("animation2 completed");
+        await animationPromise("elem3");
+        console.log("animation3 completed");*/
+
+        //Parallel
+        try {
+          await Promise.all([
+            animationPromise("elem1", move),
+            animationPromise("elem2", move),
+            animationPromise("elem3", move),
+          ]);
+          console.log("all completed");
+          await animationPromise("elem2", rotate);
+          await animationPromise("elem1", rotate);
+          await animationPromise("elem3", rotate);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      function init() {
+        const button = document.getElementById("animationButton");
+        button.addEventListener("click", startFullAnimation);
+      }
+
+      window.addEventListener("load", init);
+    </script>
+  </head>
+
+  <body>
+    <h1 id="elem1" class="layout red"></h1>
+    <h1 id="elem2" class="layout green"></h1>
+    <h1 id="elem3" class="layout blue"></h1>
+    <div role="button" id="animationButton">Start Animation</div>
+  </body>
+</html>

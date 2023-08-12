@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/SenthilKumaranC/nataraj-sathish-javascript#readme",
   "dependencies": {
-    "immer": "^10.0.2"
+    "immer": "^10.0.2",
+    "uuid": "^9.0.0"
   }
 }

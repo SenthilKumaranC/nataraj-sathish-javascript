@@ -1,0 +1,27 @@
+login api
+
+list of post
+  - like
+  - comment
+list of comments
+list of notification
+
+Query
+post - how many people liked
+     - how many people commented
+
+getAllPosts 
+   query (like,comment,timeStamp)
+getAllPostOnlyContentAndLikes
+1000 posts  - 
+1000x5 = 5000 keys - 50000KB
+post
+  content - 10KB
+  timeStamp
+  image source
+  likescount
+  comment
+
+
+//to generate unique id in front end client
+npm install uuid

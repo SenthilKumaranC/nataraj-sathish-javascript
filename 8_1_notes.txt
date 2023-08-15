@@ -1,0 +1,45 @@
+Front End
+1) See list of songs - categaroized by languages , singers 
+2) You can play , pause , slider move , next , prev
+3) delete song , update song , create song
+4) create our own playlist
+5) loop song , shuffle songs
+
+
+Data - Repeatable or Noo Repeatable
+
+        songs - Repeatable  data(array + object)
+
+        currentSongData - Non Repeatable Data
+                playingStatus - true(play) / false(pause)
+                currentSongId
+                currentDuration
+                
+        userInformation
+                userMobile
+                country
+                language
+        authInformation
+            loggedIn
+            accessToken
+            refreshToken
+
+User Triggered Action
+    Search the song
+    Pause the song
+    Play the Song
+
+
+Non User Action
+
+    Get Song List
+    Render Initiall List
+
+
+
+https://www.sathishmusicfactory.com/songs
+
+https://color.adobe.com/create/color-wheel
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+https://cssgridgarden.com/

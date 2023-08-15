@@ -1,0 +1,16 @@
+{
+  "name": "musicplayer",
+  "version": "0.0.1",
+  "description": "Using this software , we can enter into the music world",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "music",
+    "song",
+    "rhythm"
+  ],
+  "author": "Sathish-Nataraj",
+  "license": "MIT"
+}

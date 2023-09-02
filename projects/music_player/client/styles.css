@@ -4,7 +4,8 @@
   background-color: bisque;
   display: grid;
   grid-template-rows: 10% 90%;
-}
+/*   overflow:hidden;
+ */}
 .Header {
   width: 100%;
   height: 100%;
@@ -14,7 +15,11 @@
 .Body {
   width: 100%;
   height: 100%;
-  background-color: #5090c6;
+  background-color: white;
+  display: grid;
+/*   overflow: hidden;
+ */  grid-template-rows: 1fr 75px;
+ font-family: Arial, Helvetica, sans-serif;
 }
 
 .Title {
@@ -22,27 +27,40 @@
   font-size: 18px;
 }
 
+
+.SongsWrapper {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
 .Songs {
   padding: 10px;
   box-sizing: border-box;
   width: 100%;
   height: max-content;
+  
+  /* height: 100%;  */
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: space-evenly;
-}
+} 
 
 .Song {
-  width: 200px;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
+  padding:10px;
+  width: 100%;
+  max-width: 400px;
+  height: 75px;
+  display: grid;
+  grid-template-columns: 10% 1fr 20%;
+  gap: 25px;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   border: 2px solid black;
-  background-color: burlywood;
+  background-color: black;
   border-radius: 20px;
 }
 
@@ -50,3 +68,34 @@
   width: 50px;
   height: 50px;
 }
+
+.Currentsong {
+  height: 100%;
+  width: 100%;
+  max-width: 400px;
+  background-color: grey;
+  display:flex;
+  flex-direction: column;
+   
+}
+
+.ProgressBar {
+  height: 10px;
+  width: 100%;
+  background-color: red;
+
+  
+}
+
+.CurrentSongTitle {
+  display: block;
+ /* height: 20%; */
+  /*padding-top: 10px;*/
+}
+
+.CurrentSongImage {
+  /*height:75%; */
+  height: 70px;
+  width: 70px;
+  object-fit: cover;
+} 

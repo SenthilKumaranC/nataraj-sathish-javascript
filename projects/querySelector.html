@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<style>
+a[target] {
+  background-color: yellow;
+}
+</style>
+
+<body>
+<h1>The Document Object</h1>
+<h2>The querySelector() Method</h2>
+
+<p>The CSS selector a[target] makes sure that all links with a target attribute gets a yellow background:</p>
+
+<p>Add a red border to the first link with a target attribute:</p>
+
+<a href="https://www.w3schools.com">w3schools.com</a>
+<a href="http://www.disney.com" target="_blank">disney.com</a>
+<a href="http://www.wikipedia.org" target="_top">wikipedia.org</a>
+
+<script>
+const elements = document.querySelectorAll("a[target]");
+console.log(elements);
+elements.forEach((element)=>{
+element.style.border = "10px solid red";
+})
+
+
+</script>
+
+</body>
+</html>
+
+

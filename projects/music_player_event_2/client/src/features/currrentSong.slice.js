@@ -1,5 +1,4 @@
 export function CurrentSongSlice(rootElement) {
-
   let data = {
     audioMode: "pause",
     currentSongId: "",
@@ -16,7 +15,7 @@ export function CurrentSongSlice(rootElement) {
           audioMode: data.audioMode,
         },
       });
-      this?.dispatchEvent(audioModeEvent);
+      rootElement?.dispatchEvent(audioModeEvent);
       console.log("event dispatched");
     },
     pauseSong: () => {

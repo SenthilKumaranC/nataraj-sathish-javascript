@@ -1,4 +1,4 @@
-import { fetchSongs } from "./services/songs.service.js";
+import { fetchSongs } from "../services/songs.service.js";
 export function SongsSlice(rootElement) {
   let data = {
     songs: []

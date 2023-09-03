@@ -1,5 +1,4 @@
-import { fetchSongs } from "../../services/songs.service.js";
-import { musicPlayerStore } from "../../store.js";
+import { musicPlayerStore } from "../../features/store.js";
 import { CurrentSong } from "../CurrentSong/CurrrentSong.js";
 import { Songs } from "../Songs/Songs.js";
 
@@ -19,15 +18,14 @@ export function MusicPlayer(id) {
     musicPlayer.id = id;
     document.body.appendChild(musicPlayer);
 
-    console.log(store.data.songs);
-
-    await store.methods.createSongs();
-
-    console.log(store.data.songs);
+    await store.songsSlice.methods.createSongs();
 
     //Create Required Components inside the Music Player
     const songsClosure = Songs(musicPlayer, store);
     songsClosure.render(store.songsSlice.data.songs);
+    //store - database
+    //songslice - table
+    //data.songs (data inside the data)
 
     const currentSongClosure = CurrentSong(store);
 

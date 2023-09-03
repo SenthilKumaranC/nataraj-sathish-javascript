@@ -1,5 +1,5 @@
 import { playSong , pauseSong} from "./playPauseSong.js";
-import { musicPlayerStore  } from "./features/store.js";
+import { musicPlayerStore  } from "./store.js";
 
 
 export function createSongElement(songData) {

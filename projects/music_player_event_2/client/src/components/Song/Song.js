@@ -13,7 +13,7 @@ export function Song(songsDiv,store) {
     coverPhotoImage.src = songData.coverPhotoPath;
 
     const playButton = songDiv.querySelector("#play");
-    playButton.addEventListener("click", store.methods.playSong);
+    playButton.addEventListener("click", store.currentSongSlice.methods.playSong);
 
     const pauseButton = songDiv.querySelector("#pause");
     //pauseButton.addEventListener("click", pauseSong);

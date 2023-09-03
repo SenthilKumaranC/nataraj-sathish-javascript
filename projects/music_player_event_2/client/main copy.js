@@ -1,5 +1,5 @@
 import { createSongElement } from "./src/createSongElement.js";
-import { musicPlayerStore} from "./src/features/store.js";
+import { musicPlayerStore} from "./src/store.js";
 import { fetchData } from "./src/services/songs.service.js";
 
 

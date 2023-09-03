@@ -1,5 +1,4 @@
-import { fetchSongs } from "./services/songs.service.js";
-export function CurrentSongSlice() {
+export function CurrentSongSlice(rootElement) {
 
   let data = {
     audioMode: "pause",
@@ -17,7 +16,7 @@ export function CurrentSongSlice() {
           audioMode: data.audioMode,
         },
       });
-      rootElement?.dispatchEvent(audioModeEvent);
+      this?.dispatchEvent(audioModeEvent);
       console.log("event dispatched");
     },
     pauseSong: () => {

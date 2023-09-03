@@ -1,5 +1,4 @@
 import { CurrentSongSlice } from "./currrentSong.slice.js";
-import { fetchSongs } from "./services/songs.service.js";
 import { SongsSlice } from "./songs.slice.js";
 
 export function musicPlayerStore(musicPlayer) {

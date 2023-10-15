@@ -1,9 +1,10 @@
 export function Song(songsDiv,store) {
+  
   function createSongElement(songData) {
     const template = document.querySelector("#SongTemplate");
     const clone = template.content.cloneNode(true);
-
     const songDiv = clone.querySelector(".Song");
+
     songDiv.id = songData.songId;
 
     const titleSpan = songDiv.querySelector(".Title");

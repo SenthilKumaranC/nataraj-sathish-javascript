@@ -1,13 +1,35 @@
 export function CurrentSongSlice(rootElement) {
+  let store;
+
   let data = {
     audioMode: "pause",
     currentSongId: "",
     previousSongId: "",
     currentProgressPercent: 0,
+    currentSongData: null
   };
 
+  let updateStoreVariables = (_store) => {
+     store = _store
+  }
+  
+  const saveCurrentSongData= (currengSongData) => {
+    data.currentSongData = currengSongData;
+  }
   //public methods
   const methods = {
+
+    saveCurrentSongData ,
+  
+   //inside CurrentSongSlice
+    getCurrentSongData: (id) => {
+      const songs = store.songsSlice.data.songs;
+      const currentSongData =  songs.find((song) => {
+        return song.id === id;
+      });
+      saveCurrentSongData(currentSongData)
+    },
+    
     playSong: () => {
       data.audioMode = "play";
       const audioModeEvent = new CustomEvent("AudioModeEvent", {
@@ -16,12 +38,12 @@ export function CurrentSongSlice(rootElement) {
         },
       });
       rootElement?.dispatchEvent(audioModeEvent);
-      console.log("event dispatched");
+      console.log("play song event dispatched");
     },
     pauseSong: () => {
-      audioMode = "pause";
+      data.audioMode = "pause";
     },
   };
 
-  return { methods, data }; //songs1 == songs0
+  return { methods, data ,updateStoreVariables }; //songs1 == songs0
 }

@@ -9,13 +9,15 @@ export function MusicPlayer(id) {
   //Main Template
 
   const render = async () => {
+    //cloning the primary template
     const template = document.querySelector("#MusicPlayerTemplate");
     const clone = template.content.cloneNode(true);
     const musicPlayer = clone.querySelector(".MusicPlayer");
-
+   
+    //conecting with store
     store = musicPlayerStore(musicPlayer);
-
     musicPlayer.id = id;
+
     document.body.appendChild(musicPlayer);
 
     await store.songsSlice.methods.createSongs();
@@ -27,12 +29,12 @@ export function MusicPlayer(id) {
     //songslice - table
     //data.songs (data inside the data)
 
-    const currentSongClosure = CurrentSong(store);
+    const currentSongClosure = CurrentSong(musicPlayer,store);
 
-    musicPlayer.addEventListener("AudioModeEvent", (event) => {
+/*     musicPlayer.addEventListener("AudioModeEvent", (event) => {
       console.log("Inside Music Player Song");
       console.log(event);
-    });
+    }); */
   };
   return { render };
 }

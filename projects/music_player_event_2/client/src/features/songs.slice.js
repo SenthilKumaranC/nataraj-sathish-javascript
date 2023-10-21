@@ -11,7 +11,7 @@ export function SongsSlice(rootElement) {
 
   //public methods
   const methods = {
-    getCurrentSongData: (id) => {
+    findCurrentSongData: (id) => {
       const currentSongData =  data.songs.find((song) => {
         return song.id === id;
       });

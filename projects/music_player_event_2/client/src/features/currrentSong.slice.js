@@ -15,6 +15,7 @@ export function CurrentSongSlice(rootElement) {
   
   const saveCurrentSongData= (currengSongData) => {
     data.currentSongData = currengSongData;
+    
   }
   //public methods
   const methods = {
@@ -28,6 +29,7 @@ export function CurrentSongSlice(rootElement) {
         return song.id === id;
       });
       saveCurrentSongData(currentSongData)
+
     },
     
     playSong: () => {

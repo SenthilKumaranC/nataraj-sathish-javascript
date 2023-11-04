@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script>
+      const indexedDBInstance = window.indexedDB.open("Facebook", 4);
+      let db;
+      indexedDBInstance.onerror = () => {
+        console.log("error");
+      };
+      //To save db reference
+      indexedDBInstance.onsuccess = (event) => {
+        console.log("success");
+        db = event.target.result;
+      };
+      //table create obj
+      indexedDBInstance.onupgradeneeded = (event) => {
+
+        console.log("onupgradeneeded");
+        const db = event.target.result;
+        
+        //Defining the Table and Interface
+        if (db.objectStoreNames.contains("posts")) return;
+
+        const objectStore = db.createObjectStore("posts", { keyPath: "id" });
+        objectStore.createIndex("content", "content", { unique: false });
+        objectStore.createIndex("timeStamp", "timeStamp", { unique: false });
+
+        objectStore.transaction.oncomplete = () => {
+          //Using this we can do group manipulation - add delete update
+          const crud = db
+            .transaction("posts", "readwrite")
+            .objectStore("posts");
+          crud.add({ id: "xxxx", content: "CCCCC", timeStamp: "ttttt" });
+        };
+      };
+
+      function saveData() {
+        const crud = db.transaction("posts", "readwrite").objectStore("posts");
+        crud.add({ id: "yyyy", content: "DDDDD", timeStamp: "KKKK" });
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="saveData()">Save</button>
+  </body>
+</html>

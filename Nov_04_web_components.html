@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <script>
+      class HelloWorld extends HTMLElement {
+        static get observedAttributes() {
+          return ["text"];
+        }
+        // on mount function
+        connectedCallback() {
+          this.textContent = this.text;
+        }
+        attributeChangedCallback(property, oldValue, newValue) {
+          if (oldValue === newValue) return;
+          this[property] = newValue;
+          if (property === "text") {
+            this.textContent = this[property];
+          }
+        }
+      }
+      customElements.define("hello-world", HelloWorld);
+
+      function changeText() {
+        const hellwWorldElement = document.getElementById("hw");
+        hellwWorldElement.setAttribute("text", "bye bye");
+      }
+    </script>
+
+    <script>
+      class MenuElement extends HTMLElement {
+        static get observedAttributes() {
+          return ["count", "names"];
+        }
+        constructor() {
+          super();
+        }
+        connectedCallback() {
+          console.log(this.count, this.names);
+        }
+        attributeChangedCallback(property, oldValue, newValue) {
+          if (oldValue === newValue) return;
+          this[property] = newValue;
+          console.log(property, oldValue, newValue);
+          if (!!this.count && !!this.names) {
+            const countInNumber = Number(this.count);
+            const names = this.names.split(",");
+            for (let index = 0; index < countInNumber; index++) {
+              const buttonElement = document.createElement("button");
+              buttonElement.textContent = names[index];
+              this.appendChild(buttonElement);
+            }
+          }
+        }
+      }
+      customElements.define("my-menu", MenuElement);
+    </script>
+  </head>
+  <body>
+    <hello-world id="hw" text="hello world"></hello-world>
+    <my-menu count="10" names="Home,ContactUs,Gallery,Home,ContactUs,Gallery,Home,ContactUs,Gallery,XXX">
+        <button></button>
+    </my-menu>
+    <button onclick="changeText();">Change Text</button>
+  </body>
+</html>

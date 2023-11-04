@@ -1,0 +1,69 @@
+<html>
+   <!--  
+    Local Storage - Data will not get deleted after the broswer tab close
+    Session Storage - Data will get deleted after the broswer tab close - 
+    Cookie - similar to local storage but less space and set expiry date and max-age
+    IndexDB - very similar to  DataBase
+   -->
+   <head>
+     <script>
+        if(localStorage.getItem("isRaining")){
+           console.log("yes it is raining")
+        }
+
+        localStorage.clear()
+        //console.log(localStorage.getItem("token"))
+        //console.log(JSON.parse(localStorage.getItem("address")).doorNo)
+        //localStorage.setItem("isRaining",true)
+        //localStorage.setItem("address",JSON.stringify({doorNo:"sasdsdsd"}))
+        //localStorage.setItem("token","hdjdhfgjgfjdfb@33333fedfdf")
+
+
+        //sessionStorage.setItem("name","Rajini")
+
+        //Cookie can be set by server
+
+        document.cookie = "name=Kamal"
+        document.cookie = "cash=100"
+
+        const keyValueGroupSplit = document.cookie.split("; ").find((keyValue)=>keyValue.includes("cash"))
+        const keyValueSplit = keyValueGroupSplit.split("=")[1]
+        //name=Kamal; cash=100
+        console.log(keyValueSplit)
+
+        let a = {
+            localValue : "1",
+            get value(){
+               return "I cannot give the value"
+            },
+            set value(_value){
+                this.localValue += _value
+            }
+        }
+
+        a.value = "5"
+        a.value = "6"
+        console.log(a.value)
+
+        expectedVotingAge = 18
+        let person = {
+            $myVotingAge : 0,
+            get myVotingAge(){
+               return "I cannot give the value"
+            },
+            set myVotingAge(_myVotingAge){
+                if(_myVotingAge>=expectedVotingAge){
+                    this.$myVotingAge += _myVotingAge
+                }
+            }
+        }
+
+        person.myVotingAge = 10
+
+        Proxy()
+    
+    
+
+     </script>
+   </head>
+</html>
